@@ -7,7 +7,7 @@ int main(){
 	const int area=200;
 	// area = 2000;
 
-	cout<<false<<endl;
+	cout<<false	<<endl;
 	// cout<<PI*10<<endl;
 
 	cout<<endl;
