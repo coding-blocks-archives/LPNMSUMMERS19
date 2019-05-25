@@ -1,3 +1,4 @@
+// OptimizedBubbleSort
 // BubbleSort
 #include <iostream>
 using namespace std;
@@ -14,15 +15,19 @@ int main(){
 	}cout<<endl;
 	// Bubble Sort
 	for(int i=0;i<=n-2;i++){ // Number of iterations : n-1
+		int count=0;
 		for(int j=0;j<=n-2-i;j++){
 			if(a[j]>a[j+1]){
 				// swap both the elements i.e a[j] and a[j+1]
 				int temp=a[j];
 				a[j]=a[j+1];
 				a[j+1]=temp;
+				count++;
 			}
 		}
-		
+		if(count==0){
+			break;
+		}
 	}
 
 
