@@ -11,9 +11,7 @@ bool CheckPrime(int n){
 	}
 	return true;
 }
-
 void PrintPrimes(int n){
-
 	for(int i=2;i<=n;i++){
 		if(CheckPrime(i)){
 			cout<<i<<" ";
@@ -21,10 +19,7 @@ void PrintPrimes(int n){
 	}
 	cout<<endl;
 	return;
-
 }
-
-
 
 int main(){
 	int n;
