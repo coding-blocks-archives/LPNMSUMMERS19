@@ -11,7 +11,7 @@ bool isSafeToPut(int board[][10],int n,int i,int j){
 
 	int r = i;
 	int c = j;
-	// Left diagnol
+	// Check Left diagnol
 	while(r>=0 && c>=0){
 		if(board[r][c]){
 			return false;
