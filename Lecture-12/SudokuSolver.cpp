@@ -60,12 +60,6 @@ bool SudokuSolver(int mat[][9],int n,int i,int j){
 	return false;
 }
 
-
-
-
-
-
-
 int main(){
 	int mat[9][9] =
 		{{5,3,0,0,7,0,0,0,0},
@@ -77,6 +71,7 @@ int main(){
 		{0,6,0,0,0,0,2,8,0},
 		{0,0,0,4,1,9,0,0,5},
 		{0,0,0,0,8,0,0,7,9}};
+	
 	SudokuSolver(mat,9,0,0);
 
 
