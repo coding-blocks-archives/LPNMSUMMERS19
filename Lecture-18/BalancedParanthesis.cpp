@@ -45,7 +45,7 @@ bool isBalanced(stack<char> s,char *in){
 }
 
 int main(){
-	char in[100]="{a+b*[c+(d+e)*f]+(g+h)}((";
+	char in[100]="{a+b*[c+(d+e)*f]+(g+h)}(( ";
 	
 	stack<char> s;
 
