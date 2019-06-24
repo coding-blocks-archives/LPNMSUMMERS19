@@ -50,7 +50,6 @@ node* InsertInBST(node* root,int data){
 		root= new node(data);
 		return root;
 	}
-
 	// Recursive case
 	if(root->data<=data){
 		root->right = InsertInBST(root->right,data);
@@ -98,16 +97,43 @@ void PrintLevelOrder(node* root){
 		}
 	}
 }
+
+node* SearchInBst(node* root,int key){
+	// Base Case
+	if(root==NULL){
+		return NULL;
+	}
+
+	// Recursive case
+	if(root->data == key){
+		return root;
+	}
+	else if(root->data<key){
+		return SearchInBst(root->right,key);
+	}
+	else{
+		return SearchInBst(root->left,key);
+	}
+}
+
 int main(){
 	node* root = CreateTree();
 
-	PreOrder(root);
-	cout<<endl;
-	InOrder(root);
-	cout<<endl;
-	PostOrder(root);
-	cout<<endl;
+	// PreOrder(root);
+	// cout<<endl;
+	// InOrder(root);
+	// cout<<endl;
+	// PostOrder(root);
+	// cout<<endl;
 	PrintLevelOrder(root);
+	int key;
+	cin>>key;
+	if(SearchInBst(root,key)){
+		cout<<"Found"<<endl;
+	}
+	else{
+		cout<<"Not Found"<<endl;
+	}
 
 
 	return 0; 
