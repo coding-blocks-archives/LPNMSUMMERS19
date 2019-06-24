@@ -175,19 +175,43 @@ node* LevelOrderInput(){
 			temp->right = new node(c2);
 			q.push(temp->right);
 		}
-
 	}
-
 	return root;
+}
 
+int i = 0;
+
+node* MakeTree(int *in,int* pre,int s,int e){
+	// Base case
+	if(s>e){
+		return NULL;
+	}
+	// Recursive case
+	// Pick the ith preorder data and make it the root node
+	int data = pre[i];
+	i++;
+	node* root = new node(data);
+	// Search the data in INORDER of the tree
+	int k =-1;
+	for(int j=s;j<=e;j++){
+		if(in[j] == data){
+			k = j;
+			break;
+		}
+	}
+	root->left = MakeTree(in,pre,s,k-1);
+	root->right = MakeTree(in,pre,k+1,e);
+	return root;
 }
 
 int main(){
 
 	node* root=NULL;
+	int pre[]={8,10,1,6,4,7,3,14,13};
+	int in[]={1,10,4,6,7,8,3,13,14};
 
-	// root= CreateTree();
-	root = LevelOrderInput();
+	root= MakeTree(in,pre,0,8);
+	// root = LevelOrderInput();
 	PreOrder(root);
 	cout<<endl;
 	InOrder(root);
