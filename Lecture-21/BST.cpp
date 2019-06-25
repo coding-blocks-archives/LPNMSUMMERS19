@@ -155,7 +155,59 @@ bool isBST(node* root,int min=INT_MIN,int max=INT_MAX){
 	else{
 		return false;
 	}
+}
 
+class linkedlist{
+public:
+	node* head;
+	node* tail;
+};
+
+linkedlist BSTtoLL(node* root){
+	// Base case
+	linkedlist l;
+	if(root==NULL){
+		l.head = l.tail = NULL;
+		return l;
+	}
+
+	// Recursive case
+	// 4 cases
+	if(root->left == NULL && root->right!=NULL){
+		linkedlist right = BSTtoLL(root->right);
+		root->right = right.head;
+		l.head = root;
+		l.tail = right.tail;
+		return l;
+	}
+	else if(root->left != NULL && root->right==NULL){
+		linkedlist left = BSTtoLL(root->left);
+		left.tail->right = root;
+		l.head = left.head;
+		l.tail = root;
+		return l;
+	}
+	else if(root->left == NULL && root->right==NULL){
+		l.head = l.tail = root;
+		return l;
+	}
+	else{
+		linkedlist left = BSTtoLL(root->left);
+		linkedlist right = BSTtoLL(root->right);
+		left.tail->right = root;
+		root->right = right.head;
+		l.head = left.head;
+		l.tail = right.tail;
+		return l;
+	}
+}
+
+void Print(node* head){
+	while(head){
+		cout<<head->data<<"-->";
+		head = head->right;
+	}
+	cout<<endl;
 }
 
 
@@ -169,13 +221,8 @@ int main(){
 	// PostOrder(root);
 	// cout<<endl;
 	PrintLevelOrder(root);
-
-	if(isBST(root)){
-		cout<<"BST"<<endl;
-	}
-	else{
-		cout<<"Not BST"<<endl;
-	}
+	linkedlist l = BSTtoLL(root);
+	Print(l.head);
 
 
 	return 0; 
