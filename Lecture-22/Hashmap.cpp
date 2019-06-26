@@ -111,6 +111,12 @@ public:
 		}
 	}
 
+	void remove(string key){
+		int i = hashFn(key);
+		node<T>* temp = Bucket[i];
+	}
+
+
 	void Print(){
 		for(int i=0;i<ts;i++){
 			cout<<i<<"->";
