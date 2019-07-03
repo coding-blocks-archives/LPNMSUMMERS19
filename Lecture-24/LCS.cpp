@@ -3,8 +3,8 @@ using namespace std;
 
 int LCS(char* a, char* b){
 	int dp[100][100] = {0};
-	int m = strlen(b);
 	int n = strlen(a);
+	int m = strlen(b);
 
 	for(int i=0;i<=n;i++){
 		dp[i][0] = 0;
@@ -21,7 +21,6 @@ int LCS(char* a, char* b){
 			else{
 				dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
 			}
-
 		}
 	}
 
